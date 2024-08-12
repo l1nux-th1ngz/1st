@@ -1,0 +1,113 @@
+# Open Terminal
+ctrl + Return
+	kitty
+ctrl + t
+	alacritty
+
+# Rofi launcher  
+F1
+	rofi -modi drun,window,run,keys,ssh -show drun -show-icons -sidebar-mode -location 0  -width 360
+
+# Rofi Active Tasks 
+super + F12
+	rofi -modi window -show window -show-icons -sidebar-mode
+
+# Web browser        
+f2
+	firefox 
+
+# Geany
+f3
+	geany
+
+# Open file manager
+ctrl + o
+	nemo
+
+# Power Down
+ctrl + alt + p
+	halt
+
+# Reboot
+ctrl + alt + Delete
+	reboot
+     
+# Trackpad (Toggle)
+#alt + p
+.local/share/scripts/touchpad-toggle.sh
+	
+# VirtualBox
+alt + v
+	virtualbox
+	
+# Reload sxhkd config
+super + alt + Escape
+	pkill -USR1 -x sxhkd          
+   
+# Sound Volume (Up)
+XF86AudioRaiseVolume
+	amixer set Master 2%+
+
+# Sound Volume (Down)
+XF86AudioLowerVolume
+	amixer set Master 2%-
+
+# Mute (Toggle)  
+XF86AudioMute
+	amixer set Master toggle
+
+# Screen Brightness (Up)
+XF86MonBrightnessUp
+	exec brightnessctl set +10%
+
+# Screen Brightness (Down)
+XF86MonBrightnessDown
+	exec brightnessctl set 10%-
+
+#########################
+#        POLYBAR        #
+#########################
+
+# Hide polybar
+ctrl + h
+	polybar-msg cmd toggle
+
+#########################
+# bspwm DESKTOP SPECIFIC #
+#########################
+
+# Contract a window by moving one of its sides inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Change workspace focus           
+ctrl + {1,2,3,4,5,6,7,8,9,0}
+	bspc desktop --focus ^{1,2,3,4,5,6,7,8,9,10}
+
+# Close and kill window 
+ctrl + q
+	bspc node -{c,k}
+
+# Logout
+ctrl + alt + l
+	bspc quit
+
+# Alternate between tiled & monocle
+super + m
+	bspc desktop -l next
+
+# Set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Focus or send to a desktop
+super + {1-9,0} keypad {1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Mouse pointer raises focus on window
+~button1
+	bspc pointer -g focus
