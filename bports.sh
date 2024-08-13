@@ -22,3 +22,8 @@ sudo apt update
 sudo apt-get upgrade -y
 
 echo -e "\n\e[0;32mSystem upgrade completed.\e[0m"
+
+sudo apt autoremove && sudo apt clean
+
+# Reboot
+sudo reboot
